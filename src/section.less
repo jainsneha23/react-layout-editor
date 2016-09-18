@@ -1,0 +1,39 @@
+.section {
+  border: 1px dashed #ccc;
+  min-height: 40px;
+  margin: 5px 0;
+  cursor: pointer;
+  .col {
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px dashed #ccc;
+    min-height: 40px;
+    &.active {
+      border: 2px dashed #ccc;
+    }
+    &.col-12 {
+      width: 100%;
+    }
+    &.col-8 {
+      width: 66.6%;
+    }
+    &.col-6 {
+      width: 50%;
+    }
+    &.col-4 {
+      width: 33.3%;
+    }
+    &.col-3 {
+      width: 25%;
+    }
+  }
+  &.active {
+    border: 2px dashed #ccc;
+    .col {
+      border: 2px dashed #ccc;
+    }
+  }
+  &.hasColumn {
+    border: none;
+  }
+}
