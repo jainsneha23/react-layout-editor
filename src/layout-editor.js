@@ -10,7 +10,7 @@ class LayoutEditor extends React.Component {
     this.state = {
       section: [],
       activeIndex: -1
-    }
+    };
     this.setActive = this.setActive.bind(this);
     this.addSection = this.addSection.bind(this);
     this.removeSection = this.removeSection.bind(this);
@@ -72,6 +72,7 @@ class LayoutEditor extends React.Component {
           moveUp={this.moveUp}
           moveDown={this.moveDown}
           splitSection={this.splitSection}
+          active={this.state.activeIndex !== -1}
         />
         <div className="editor-pane">
           {
@@ -85,7 +86,7 @@ class LayoutEditor extends React.Component {
                   column={section.column}
                   active={this.state.activeIndex === index}
                 />
-              )
+              );
             })
           }
         </div>
