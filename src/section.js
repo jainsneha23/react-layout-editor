@@ -3,13 +3,17 @@ import './section.less';
 
 class Section extends React.Component {
 
+  getMarkUp(className) {
+    return <div className={className}>{this.props.children}</div>;
+  }
+
   section1() {
     return (
       <div
         className={`section ${this.props.active? 'active' : ''}`}
         onClick={() => this.props.setActive(this.props.index)}
       >
-      <span>{this.props.value}</span>
+      {this.getMarkUp()}
       </div>
     );
   }
@@ -20,8 +24,8 @@ class Section extends React.Component {
         className={`section ${this.props.active? 'active' : ''} ${this.props.column? 'hasColumn' : ''}`}
         onClick={() => this.props.setActive(this.props.index)}
       >
-      <div className="col col-6"><span>{this.props.value}</span></div>
-      <div className="col col-6"><span>{this.props.value}</span></div>
+      {this.getMarkUp('col col-6')}
+      {this.getMarkUp('col col-6')}
       </div>
     );
   }
@@ -32,9 +36,9 @@ class Section extends React.Component {
         className={`section ${this.props.active? 'active' : ''} ${this.props.column? 'hasColumn' : ''}`}
         onClick={() => this.props.setActive(this.props.index)}
       >
-      <div className="col col-4"><span>{this.props.value}</span></div>
-      <div className="col col-4"><span>{this.props.value}</span></div>
-      <div className="col col-4"><span>{this.props.value}</span></div>
+      {this.getMarkUp('col col-4')}
+      {this.getMarkUp('col col-4')}
+      {this.getMarkUp('col col-4')}
       </div>
     );
   }
@@ -45,8 +49,8 @@ class Section extends React.Component {
         className={`section ${this.props.active? 'active' : ''} ${this.props.column? 'hasColumn' : ''}`}
         onClick={() => this.props.setActive(this.props.index)}
       >
-      <div className="col col-4"><span>{this.props.value}</span></div>
-      <div className="col col-8"><span>{this.props.value}</span></div>
+      {this.getMarkUp('col col-4')}
+      {this.getMarkUp('col col-8')}
       </div>
     );
   }
@@ -57,8 +61,8 @@ class Section extends React.Component {
         className={`section ${this.props.active? 'active' : ''} ${this.props.column? 'hasColumn' : ''}`}
         onClick={() => this.props.setActive(this.props.index)}
       >
-      <div className="col col-8"><span>{this.props.value}</span></div>
-      <div className="col col-4"><span>{this.props.value}</span></div>
+      {this.getMarkUp('col col-8')}
+      {this.getMarkUp('col col-4')}
       </div>
     );
   }
@@ -69,9 +73,9 @@ class Section extends React.Component {
         className={`section ${this.props.active? 'active' : ''} ${this.props.column? 'hasColumn' : ''}`}
         onClick={() => this.props.setActive(this.props.index)}
       >
-      <div className="col col-3"><span>{this.props.value}</span></div>
-      <div className="col col-6"><span>{this.props.value}</span></div>
-      <div className="col col-3"><span>{this.props.value}</span></div>
+      {this.getMarkUp('col col-3')}
+      {this.getMarkUp('col col-6')}
+      {this.getMarkUp('col col-3')}
       </div>
     );
   }
@@ -107,7 +111,7 @@ class Section extends React.Component {
 
 Section.propTypes = {
   index: React.PropTypes.number.isRequired,
-  value: React.PropTypes.string.isRequired,
+  children: React.PropTypes.node.isRequired,
   active: React.PropTypes.bool.isRequired,
   setActive: React.PropTypes.func.isRequired,
   column: React.PropTypes.number.isRequired

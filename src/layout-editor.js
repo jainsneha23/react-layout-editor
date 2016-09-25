@@ -59,8 +59,9 @@ class LayoutEditor extends React.Component {
   }
 
   splitSection(id) {
-    this.state.section[this.state.activeIndex].column = id;
-    this.setState({section: this.state.section});
+    const oldState = Object.assign(this.state.section);
+    oldState[this.state.activeIndex].column = id;
+    this.setState({section: oldState});
   }
 
   render() {
@@ -82,10 +83,9 @@ class LayoutEditor extends React.Component {
                   key={index}
                   index={index}
                   setActive={this.setActive}
-                  value={section.value}
-                  column={section.column}
-                  active={this.state.activeIndex === index}
-                />
+                  column={section.column || 0}
+                  active={this.state.activeIndex === index} >
+                {this.props.children}</Section>
               );
             })
           }
@@ -94,5 +94,9 @@ class LayoutEditor extends React.Component {
     );
   }
 }
+
+LayoutEditor.propTypes = {
+  children: React.PropTypes.node
+};
 
 export default LayoutEditor;

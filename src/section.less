@@ -1,13 +1,23 @@
 .section {
-  border: 1px dashed #ccc;
+  border: 1px dashed #888;
   min-height: 40px;
-  margin: 5px 0;
+  margin: 10px 0;
   cursor: pointer;
+  > span {
+    display: inline-block;
+    padding: 5px;
+    color: #888;
+  }
   .col {
     display: inline-block;
     box-sizing: border-box;
-    border: 1px dashed #ccc;
+    border: 1px dashed #888;
     min-height: 40px;
+    > span {
+      display: inline-block;
+      padding: 5px;
+      color: #888;
+    }
     &.col-12 {
       width: 100%;
     }
@@ -25,12 +35,17 @@
     }
   }
   &.active {
-    border: 1px solid #ccc;
+    .active;
     .col {
-      border: 1px solid #ccc;
+      .active;
     }
   }
   &.hasColumn {
     border: none;
   }
+}
+
+.active {
+  border: 1px solid #888;
+  box-shadow: 0 0 5px 0 #ccc;
 }
