@@ -17,6 +17,16 @@ class LayoutEditor extends React.Component {
     this.moveUp = this.moveUp.bind(this);
     this.moveDown = this.moveDown.bind(this);
     this.splitSection = this.splitSection.bind(this);
+    this.getChild = this.getChild.bind(this);
+  }
+
+  getChild(compName, pos) {
+    if (pos) {
+      const oldList = Object.assign([], this.state.section);
+      oldList[pos.x].value[pos.y] = compName;
+      this.setState({childList: oldList});
+    }
+    return this.props.childList[compName] || this.props.defaultChild;
   }
 
   setActive(index) {
@@ -24,8 +34,9 @@ class LayoutEditor extends React.Component {
   }
 
   addSection() {
+    this.state.section.splice(this.state.activeIndex+1, 0, {value: []});
     this.setState({
-      section: this.state.section.concat({value: `div${this.state.section.length}`})
+      section: this.state.section
     });
   }
 
@@ -58,9 +69,10 @@ class LayoutEditor extends React.Component {
     });
   }
 
-  splitSection(id) {
+  splitSection(columns) {
     const oldState = Object.assign(this.state.section);
-    oldState[this.state.activeIndex].column = id;
+    oldState[this.state.activeIndex].column = columns;
+    oldState[this.state.activeIndex].value = Array.from({length: columns.length});
     this.setState({section: oldState});
   }
 
@@ -83,9 +95,10 @@ class LayoutEditor extends React.Component {
                   key={index}
                   index={index}
                   setActive={this.setActive}
-                  column={section.column || 0}
-                  active={this.state.activeIndex === index} >
-                {this.props.children}</Section>
+                  column={section.column || [12]}
+                  active={this.state.activeIndex === index}
+                  getChild={this.getChild}
+                  childList={section.value}/>
               );
             })
           }
@@ -96,7 +109,8 @@ class LayoutEditor extends React.Component {
 }
 
 LayoutEditor.propTypes = {
-  children: React.PropTypes.node
+  childList: React.PropTypes.object.isRequired,
+  defaultChild: React.PropTypes.func.isRequired
 };
 
 export default LayoutEditor;

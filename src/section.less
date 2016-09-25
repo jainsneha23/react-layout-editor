@@ -1,18 +1,15 @@
 .section {
-  border: 1px dashed #888;
   min-height: 40px;
   margin: 10px 0;
   cursor: pointer;
-  > span {
-    display: inline-block;
-    padding: 5px;
-    color: #888;
-  }
+  display: table;
+  width: 100%;
   .col {
-    display: inline-block;
+    display: table-cell;
     box-sizing: border-box;
     border: 1px dashed #888;
     min-height: 40px;
+    vertical-align: top;
     > span {
       display: inline-block;
       padding: 5px;
@@ -39,9 +36,6 @@
     .col {
       .active;
     }
-  }
-  &.hasColumn {
-    border: none;
   }
 }
 

@@ -16,12 +16,24 @@ const Toolbar = (props) => (
         <span>&#8595;</span>Move down</li>
     </ul>
     <ul className="layout-icons">
-      <li className={`col-1 ${!props.active?'disabled':''}`} onClick={() => props.active && props.splitSection(1)}><span></span></li>
-      <li className={`col-2 ${!props.active?'disabled':''}`} onClick={() => props.active && props.splitSection(2)}><span></span><span></span></li>
-      <li className={`col-3 ${!props.active?'disabled':''}`} onClick={() => props.active && props.splitSection(3)}><span></span><span></span><span></span></li>
-      <li className={`col-1-2 ${!props.active?'disabled':''}`} onClick={() => props.active && props.splitSection(4)}><span></span><span></span></li>
-      <li className={`col-2-1 ${!props.active?'disabled':''}`} onClick={() => props.active && props.splitSection(5)}><span></span><span></span></li>
-      <li className={`col-1-2-1 ${!props.active?'disabled':''}`} onClick={() => props.active && props.splitSection(6)}><span></span><span></span><span></span></li>
+      <li className={`col-1 ${!props.active?'disabled':''}`}
+        onClick={() => props.active && props.splitSection([12])}>
+        <span></span></li>
+      <li className={`col-2 ${!props.active?'disabled':''}`}
+        onClick={() => props.active && props.splitSection([8,8])}>
+        <span></span><span></span></li>
+      <li className={`col-3 ${!props.active?'disabled':''}`}
+        onClick={() => props.active && props.splitSection([4,4,4])}>
+        <span></span><span></span><span></span></li>
+      <li className={`col-1-2 ${!props.active?'disabled':''}`}
+        onClick={() => props.active && props.splitSection([4,8])}>
+        <span></span><span></span></li>
+      <li className={`col-2-1 ${!props.active?'disabled':''}`}
+        onClick={() => props.active && props.splitSection([8,4])}>
+        <span></span><span></span></li>
+      <li className={`col-1-2-1 ${!props.active?'disabled':''}`}
+        onClick={() => props.active && props.splitSection([3,6,3])}>
+        <span></span><span></span><span></span></li>
     </ul>
   </div>
 );
