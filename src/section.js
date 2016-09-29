@@ -10,7 +10,7 @@ class Section extends React.Component {
         onClick={() => this.props.setActive(this.props.index)}
       >
       {this.props.column.map((v,i) =>
-        <div key={i} className={`col col-${v}`}>
+        <div key={i} className={`col col-${v} ${this.props.getChild(this.props.childList[i]).name === 'Droppable' ? '' : 'dropped'}`}>
           {React.createElement(this.props.getChild(this.props.childList[i]), {
             dropped: this.props.getChild,
             id: {x: this.props.index, y: i}
